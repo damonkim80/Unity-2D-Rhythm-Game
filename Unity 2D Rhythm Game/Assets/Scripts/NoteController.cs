@@ -16,7 +16,7 @@ public class NoteController : MonoBehaviour
         }
     }
 
-    public GameObject[] Notes; //실제 Prefab 으로 만들어진 4개의 노트 오브젝트
+    //public GameObject[] Notes; // ObjectPooler 로 대체함
 
     private ObjectPooler noteObjectPooler;
     private List<Note> notes = new List<Note>();
@@ -36,9 +36,9 @@ public class NoteController : MonoBehaviour
 
     IEnumerator AwaitMakeNote(Note note)
     {
-        int noteType = note.noteType;
-        int order = note.order;
-        yield return new WaitForSeconds(order * beatInterval);
+       // int noteType = note.noteType;
+       // int order = note.order;
+        yield return new WaitForSeconds(note.order * beatInterval);
         MakeNote(note);
     }
 

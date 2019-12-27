@@ -11,6 +11,7 @@ public class BackgroundBehavior : MonoBehaviour
     {
         gameBackgroundSpriteRenderer = gameBackground.GetComponent<SpriteRenderer>();
         StartCoroutine(FadeOut(gameBackgroundSpriteRenderer, 0.005f));
+        //StartCoroutine(FadeOut(gameBackground.GetComponent<SpriteRenderer>(), 0.005f));
     }
 
     IEnumerator FadeOut(SpriteRenderer spriteRenderer, float amount)

@@ -23,7 +23,7 @@ public class ObjectPooler : MonoBehaviour
             poolsOfNotes.Add(new List<GameObject>());
             for(int n = 0; n < noteCount; n++) // 10번 반복
             {
-                GameObject obj = Instantiate(Notes[i]);
+                GameObject obj = Instantiate(Notes[i]); // 실제 Note 1/2/3/4 를 계속 복제해가며 풀에 넣어줌
                 obj.SetActive(false);
                 poolsOfNotes[i].Add(obj);
             }
@@ -33,6 +33,7 @@ public class ObjectPooler : MonoBehaviour
 
     public GameObject getObject(int noteType)
     {
+        // 오브젝트 Pool 에서 사용되고 있지 않은 오브젝트를 가져오는 방법
         foreach(GameObject obj in poolsOfNotes[noteType - 1])
         {
             if (!obj.activeInHierarchy)
@@ -40,7 +41,7 @@ public class ObjectPooler : MonoBehaviour
                 return obj;
             }
         }
-        if(more) // 오브젝트 pool이 전부 활성화된 경우 추가로 생성
+        if(more) // 오브젝트 Pool이 전부 사용되고 있을 경우 추가로 생성
         {
             GameObject obj = Instantiate(Notes[noteType - 1]);
             poolsOfNotes[noteType - 1].Add(obj);
