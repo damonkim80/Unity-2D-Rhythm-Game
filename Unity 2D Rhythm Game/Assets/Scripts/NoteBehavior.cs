@@ -55,7 +55,7 @@ public class NoteBehavior : MonoBehaviour
         else if (other.gameObject.tag == "Miss Line")
         {
             judge = GameManager.judges.MISS;
-            GameManager.instance.processJudge(judge, noteType); // 판정선에 오기 전에 누르는건 영향을 주지 않고 마지막까지 키를 누르지 않으면 미스로 점수 처리를 함
+            GameManager.instance.processJudge(judge, noteType); // 마지막까지 키를 누르지 않으면 미스로 점수 처리를 함
             gameObject.SetActive(false);
         }
     }

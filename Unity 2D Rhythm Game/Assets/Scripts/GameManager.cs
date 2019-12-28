@@ -30,11 +30,27 @@ public class GameManager : MonoBehaviour
     private Image judgementSpriteRenderer;
     private Animator judgementSpriteAnimator;
 
-    public GameObject[] trails;
+    public GameObject[] trails; //엔진에서 초기화
     private SpriteRenderer[] trailSpriteRenderers;
+
+    // 음악 변수
+    private AudioSource audioSource;
+    private string music = "Drops of H20";
+
+    // 음악을 실행하는 함수입니다.
+    void MusicStart()
+    {
+        // 리소스에서 비트(Beat) 음악 파일을 불러와 재생합니다.
+        AudioClip audioClip = Resources.Load<AudioClip>("Beats/" + music);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        audioSource.Play();
+    }
 
     void Start()
     {
+        Invoke("MusicStart", 2.0f);
+        // 초기화
         judgementSpriteRenderer = judgeUI.GetComponent<Image>();
         judgementSpriteAnimator = judgeUI.GetComponent<Animator>();
         scoreText = scoreUI.GetComponent<Text>();
@@ -57,12 +73,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // 사용자가 입력한 키에 해당하는 라인을 빛나게 처리합니다.
+        // 사용자가 입력한 키에 해당하는 라인을 빛나게 처리합니다. (계속 이렇게 반복해야만 할까?;;)
         if (Input.GetKey(KeyCode.D)) ShineTrail(0);
         if (Input.GetKey(KeyCode.F)) ShineTrail(1);
         if (Input.GetKey(KeyCode.J)) ShineTrail(2);
         if (Input.GetKey(KeyCode.K)) ShineTrail(3);
-        // 한 번 빛나게 된 라인은 반복적으로 다시 어둡게 처리합니다.
+        // 한 번 빛나게 된 라인은 반복적으로 다시 어둡게 처리합니다. 
         for(int i = 0; i < trails.Length; i++)
         {
             Color color = trailSpriteRenderers[i].color;
