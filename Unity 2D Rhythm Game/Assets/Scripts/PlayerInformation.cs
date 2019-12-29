@@ -6,6 +6,7 @@ public class PlayerInformation
 {
     public static int maxCombo { get; set; }
     public static float score { get; set; }
+    public static string selectedMusic { get; set; }
     public static string musicTitle { get; set; }
     public static string musicArtist { get; set; }
 }

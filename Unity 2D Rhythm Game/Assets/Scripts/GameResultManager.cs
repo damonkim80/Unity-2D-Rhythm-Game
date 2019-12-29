@@ -9,7 +9,6 @@ public class GameResultManager : MonoBehaviour
     public Text scoreUI;
     public Text maxComboUI;
 
-    // Start is called before the first frame update
     void Start()
     {
         musicTitleUI.text = PlayerInformation.musicTitle;
@@ -17,7 +16,6 @@ public class GameResultManager : MonoBehaviour
         maxComboUI.text = "" + PlayerInformation.maxCombo;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
